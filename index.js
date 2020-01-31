@@ -48,21 +48,23 @@ class Person {
 
   }
   eat(someFood){
-    if(this.stomach.length < 10){
-    this.stomach.push(someFood)
-    }
+    if(this.stomach.length === 10){
+   
+      {return this.stomach;
+      
   }
   else {
-    return null;
+    this.stomach.push(someFood)
   }
+}
   poop(){
-    this.stomach.length=0;
+   return this.stomach = [];
     }
   toString(){
     return `${this.name}.${this.age}`;
   }
   }
-
+}
 
 /*
   TASK 2
@@ -77,7 +79,6 @@ class Person {
     - A car which runs out of `fuel` while driving can't drive any more distance:
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
-
 class Car {
   constructor(model, milesPerGallon) {
     this.model = model;
@@ -85,11 +86,24 @@ class Car {
     this.tank = 0;
     this.odometer = 0;
   }
-  Car.prototype.fill = function(gallons){
-    this.tank += (gallons);
+ fill(){
+ return this.tank += (gallons);
   }
 
 }
+drive(distance){
+  const maxDistance = this.milesPerGallon / this.tank;
+  console.log(maxDistance);
+  const fuelConsumed = distance / this.milesPerGallon;
+  //const distanceTravelled =
+  this.tank -= fuelConsumed;
+  if(distance > maxDistance){
+    this.odometer += maxDistance ;
+    return `"I ran out of fuel at ${this.odometer} miles!`;
+  } else {
+    this.odometer += distance;
+  }
+
 
 /*
   TASK 3
@@ -104,10 +118,10 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-  constructor(object){
-    this.name = object.name,
-    this.age = object.age,
-    this.location = object.location;
+  constructor(attributes){
+    this.name = attributes.name,
+    this.age = attributes.age,
+    this.location = attributes.location;
   }
   speak() {
     return `Hello my name is ${this.name}, I am from ${this.location}`;
@@ -132,12 +146,15 @@ class Lambdasian {
 class Instructor extends Lambdasian {
   constructor(obj){
     super(obj);
-    this.specialty = obj.specialty;
-    this.favLanguage = obj.favLanguage;
-    this.catchPhrase = obj.catchPhrase
+    this.specialty = obj.specialty,
+    this.favLanguage = obj.favLanguage,
+    this.catchPhrase = obj.catchPhrase;
   }
 demo(subject){
   return `Today we are learning about ${subject}`
+}
+grade(student, subject){
+  `${student.name} recieves a perfect score on ${subject}`;
 }
 }
 
@@ -159,7 +176,7 @@ demo(subject){
 class Student extends Lambdasian{
   constructor (Object){
     super(Object);
-    this.previousBackground = object.previousBackground;
+    this.previousBackground = Object.previousBackground;
     this.className = Object.className;
     this.favSubjects = ['HTML', 'CSS', 'JS'];
   }
@@ -185,8 +202,8 @@ class ProjectManager extends Instructor{
     this.gradClassName = attributes.gradClassName,
     this.favInstructor = attributes.favInstructor;
   }
-standUp(channel){
-  return `${this.name} annouces to ${channel}, @channel standby times!`;
+standUp(namw, channel){
+  return `${this.name} debugs ${channel}, @channel standby times!`;
 }
 debugCode(student, subject){
   return `${this.name} debugs ${student.name}'s code on ${subject}`;
